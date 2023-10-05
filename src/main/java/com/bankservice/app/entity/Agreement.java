@@ -22,7 +22,7 @@ public class Agreement {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "account_id")
+    @JoinColumn(name = "account_id")
     @ManyToOne(fetch = FetchType.LAZY,
             cascade = {MERGE, PERSIST, REFRESH})
     private Account account;
@@ -35,7 +35,8 @@ public class Agreement {
     @Column(name = "interest_rate")
     private double interestRate;
 
-    @Column(name = "argement_status")
+    @JoinColumn(name = "argement_status")
+    @Enumerated(EnumType.STRING)
     private int status;
 
     @Column(name = "argement_sum")

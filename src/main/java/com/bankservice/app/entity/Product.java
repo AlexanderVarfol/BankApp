@@ -26,12 +26,13 @@ public class Product {
     @Column(name = "name")
     private String name;
 
-    @JoinColumn(name = "manager_id")
-    @ManyToOne(fetch = FetchType.LAZY,
-            cascade = {MERGE, PERSIST, REFRESH})
-    private Manager manager;
+//    @JoinColumn(name = "manager_id")
+//    @ManyToOne(fetch = FetchType.LAZY,
+//            cascade = {MERGE, PERSIST, REFRESH})
+//    private Manager manager;
 
     @Column(name = "Product_status")
+    @Enumerated(EnumType.STRING)
     private int status;
 
     @Column(name = "currency_code")
@@ -49,9 +50,9 @@ public class Product {
     @Column(name = "updated_at")
     private Timestamp updatedAt;
 
-    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY,
-            orphanRemoval = true, cascade = {MERGE, PERSIST, REFRESH})
-    private List<Manager> managers;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "manager_id")
+    private Manager manager;
 
     @Override
     public String toString() {

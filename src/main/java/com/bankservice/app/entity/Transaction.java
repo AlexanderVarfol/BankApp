@@ -23,17 +23,18 @@ public class Transaction {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "debit_account_id")
+    @JoinColumn(name = "debit_account_id")
     @ManyToOne(fetch = FetchType.LAZY,
             cascade = {MERGE, PERSIST, REFRESH})
     private Account debitAccount;
 
-    @Column(name = "credit_account_id")
+    @JoinColumn(name = "credit_account_id")
     @ManyToOne(fetch = FetchType.LAZY,
             cascade = {MERGE, PERSIST, REFRESH})
     private Account creditAccount;
 
     @Column(name = "type")
+    @Enumerated(EnumType.STRING)
     private int type;
 
     @Column(name = "amount")

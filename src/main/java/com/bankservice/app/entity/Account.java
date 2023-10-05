@@ -32,14 +32,16 @@ public class Account {
     @Column(name = "account_type")
     private AccountType type;
 
-    @Column(name = "account_status")
+    @JoinColumn(name = "account_status")
+    @Enumerated(EnumType.STRING)
     private boolean status;
 
     @Column(name = "balance")
     private double balance;
 
     @Column(name = "currency_code")
-    private CurrencyCode currencyCode; //
+    @Enumerated(EnumType.STRING)
+    private CurrencyCode currencyCode;
 
     @Column(name = "created_at")
     private Timestamp createdAt;

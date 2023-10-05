@@ -24,7 +24,7 @@ public class Client {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "manager_id")
+    @JoinColumn(name = "manager_id")
     @ManyToOne(fetch = FetchType.LAZY,
             cascade = {MERGE, PERSIST, REFRESH})
     private Manager manager;

@@ -40,7 +40,7 @@ public class Manager {
     @Column(name = "updated_at")
     private Timestamp updatedAt;
 
-    @OneToMany(mappedBy = "transaction", fetch = FetchType.LAZY,
+    @OneToMany(mappedBy = "manager", fetch = FetchType.LAZY,
             orphanRemoval = true, cascade = {MERGE, PERSIST, REFRESH})
     private List<Client> clients;
 
