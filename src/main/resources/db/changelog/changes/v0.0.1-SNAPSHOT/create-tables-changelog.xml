@@ -37,8 +37,33 @@
                 <constraints foreignKeyName="manager_id" references="managers(id)"/>
             </column>
             <column name="Product_status" type="varchar(60)"/>
-            <column name="created_at" type="timestamp"/>
-            <column name="updated_at" type="timestamp"/>
+            <column name="currency_code" type="int"/>
+            <column name="interest_rate" type="int"/>
+            <column name="Produckt_limit" type="int"/>
+            <column name="created_at" type="Timestamp"/>
+            <column name="updated_at" type="Timestamp"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create agreements table" author="AlexGay">
+        <preConditions onFail="CONTINUE" onFailMessage="Table agreements already exists">
+            <not>
+                <tableExists tableName="agreements"/>
+            </not>
+        </preConditions>
+        <createTable tableName="agreements">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="account_id" type="int">
+                <constraints foreignKeyName="manager_id" references="managers(id)"/>
+            </column>
+            <column name="Product_status" type="varchar(60)"/>
+            <column name="currency_code" type="int"/>
+            <column name="interest_rate" type="int"/>
+            <column name="Produckt_limit" type="int"/>
+            <column name="created_at" type="Timestamp"/>
+            <column name="updated_at" type="Timestamp"/>
         </createTable>
     </changeSet>
 

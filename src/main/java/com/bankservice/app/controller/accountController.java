@@ -17,7 +17,7 @@ public class accountController {
 
     public final AccountService accountService;
 
-    @GetMapping("/{id}")
+    @GetMapping(value = "/{id}")
     public Account getAccountById(@PathVariable("id") String id){
         return accountService.getAccountById(id);
     }

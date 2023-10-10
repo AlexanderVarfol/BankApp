@@ -2,10 +2,9 @@ package com.bankservice.app.service.impl;
 import com.bankservice.app.entity.Agreement;
 import com.bankservice.app.repository.AgreementRepository;
 import com.bankservice.app.service.util.AgreementService;
-import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
 
 import java.util.Optional;
 

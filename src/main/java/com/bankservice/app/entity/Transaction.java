@@ -34,7 +34,6 @@ public class Transaction {
     private Account creditAccount;
 
     @Column(name = "type")
-    @Enumerated(EnumType.STRING)
     private int type;
 
     @Column(name = "amount")
@@ -46,21 +45,16 @@ public class Transaction {
     @Column(name = "created_at")
     private Timestamp createdAt;
 
-    @OneToMany(mappedBy = "transaction", fetch = FetchType.LAZY,
-            orphanRemoval = true, cascade = {MERGE, PERSIST, REFRESH})
-    private List<Account> accountList;
-
     @Override
     public String toString() {
         return "Transaction{" +
                 "id=" + id +
-                ", debitAccountId=" + debitAccount +
-                ", creditAccountId=" + creditAccount +
+                ", debitAccount=" + debitAccount +
+                ", creditAccount=" + creditAccount +
                 ", type=" + type +
                 ", amount='" + amount + '\'' +
                 ", description=" + description +
                 ", createdAt=" + createdAt +
-                ", accountList=" + accountList +
                 '}';
     }
 

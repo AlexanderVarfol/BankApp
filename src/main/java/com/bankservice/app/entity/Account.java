@@ -32,16 +32,14 @@ public class Account {
     @Column(name = "account_type")
     private AccountType type;
 
-    @JoinColumn(name = "account_status")
-    @Enumerated(EnumType.STRING)
+    @Column(name = "account_status")
     private boolean status;
 
     @Column(name = "balance")
     private double balance;
 
     @Column(name = "currency_code")
-    @Enumerated(EnumType.STRING)
-    private CurrencyCode currencyCode;
+    private CurrencyCode currencyCode; //
 
     @Column(name = "created_at")
     private Timestamp createdAt;
@@ -53,7 +51,7 @@ public class Account {
     @JoinColumn(name = "client_id" , referencedColumnName = "id")
     private Client client;
 
-    @OneToMany(mappedBy = "transaction", fetch = FetchType.LAZY,
+    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY,
             orphanRemoval = true, cascade = {MERGE, PERSIST, REFRESH})
     private List<Agreement> agreementList;
 
