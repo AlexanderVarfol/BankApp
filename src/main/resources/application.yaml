@@ -6,7 +6,6 @@ spring:
     url: jdbc:mysql://localhost:3306/first_db
     username: root
     password: Alex03!V
-    driver-class-name: com.mysql.cj.jdbc.Driver
 
 #  jpa:
 #    show-sql: true
@@ -15,14 +14,6 @@ spring:
 
 #  liquibase:
 #    change-log: classpath:/db/changelog/changelog-master.xml
-
-
-
-
-
-
-
-
 
 
 

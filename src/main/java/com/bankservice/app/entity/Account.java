@@ -1,5 +1,6 @@
 package com.bankservice.app.entity;
 
+import com.bankservice.app.entity.enums.AccountStatus;
 import com.bankservice.app.entity.enums.AccountType;
 import com.bankservice.app.entity.enums.CurrencyCode;
 import jakarta.persistence.*;
@@ -33,7 +34,7 @@ public class Account {
     private AccountType type;
 
     @Column(name = "account_status")
-    private boolean status;
+    private AccountStatus status;
 
     @Column(name = "balance")
     private double balance;

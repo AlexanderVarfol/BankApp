@@ -1,7 +1,8 @@
 package com.bankservice.app.controller;
 
-import com.bankservice.app.entity.Agreement;
-import com.bankservice.app.service.util.AgreementService;
+
+import com.bankservice.app.entity.Client;
+import com.bankservice.app.service.util.ClientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,27 +11,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.lang.module.ResolutionException;
-import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/agreement")
+@RequestMapping("/client")
 @RequiredArgsConstructor
-public class agreementController {
+public class ClientController {
 
-    private final AgreementService agreementService;
+    private final ClientService clientService;
 
-    @GetMapping("/{id}")
-    public Agreement getAgreement(@PathVariable("id") String id) {
+    @GetMapping(value = "/{id}")
+    public Client  getClientById(@PathVariable("id")String id){
 
-        Optional<Agreement> opt = agreementService.getAgreementById(id);
+        Optional<Client> opt = clientService.getClientById(id);
 
         if(opt.isEmpty()){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "unreal id");
         }
         return opt.get();
-        
- // оно мам возвращяет оптионал, єто значит что надо проверить на пустоту
     }
+
 }

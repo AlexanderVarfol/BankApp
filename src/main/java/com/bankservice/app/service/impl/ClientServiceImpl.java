@@ -3,7 +3,6 @@ package com.bankservice.app.service.impl;
 import com.bankservice.app.entity.Client;
 import com.bankservice.app.repository.ClientRepository;
 import com.bankservice.app.service.util.ClientService;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

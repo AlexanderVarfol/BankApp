@@ -22,7 +22,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="create products table" author="AlexGay">
+    <changeSet id="create products table" author="BankAppTable">
         <preConditions onFail="CONTINUE" onFailMessage="Table products already exists">
             <not>
                 <tableExists tableName="products"/>
@@ -36,16 +36,16 @@
             <column name="manager_id" type="int">
                 <constraints foreignKeyName="manager_id" references="managers(id)"/>
             </column>
-            <column name="Product_status" type="varchar(60)"/>
-            <column name="currency_code" type="int"/>
+            <column name="product_status" type="varchar(60)"/>
+            <column name="currency_code" type="varchar(60)"/>
             <column name="interest_rate" type="int"/>
-            <column name="Produckt_limit" type="int"/>
+            <column name="product_limit" type="int"/>
             <column name="created_at" type="Timestamp"/>
             <column name="updated_at" type="Timestamp"/>
         </createTable>
     </changeSet>
 
-    <changeSet id="create agreements table" author="AlexGay">
+    <changeSet id="create agreements table" author="BankAppTable">
         <preConditions onFail="CONTINUE" onFailMessage="Table agreements already exists">
             <not>
                 <tableExists tableName="agreements"/>
@@ -56,12 +56,32 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="account_id" type="int">
-                <constraints foreignKeyName="manager_id" references="managers(id)"/>
+                <constraints foreignKeyName="account_id" references="account(id)"/>
             </column>
             <column name="Product_status" type="varchar(60)"/>
             <column name="currency_code" type="int"/>
             <column name="interest_rate" type="int"/>
-            <column name="Produckt_limit" type="int"/>
+            <column name="product_limit" type="int"/>
+            <column name="created_at" type="Timestamp"/>
+            <column name="updated_at" type="Timestamp"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create accounts table" author="BankAppTable">
+        <preConditions onFail="CONTINUE" onFailMessage="Table accounts already exists">
+            <not>
+                <tableExists tableName="accounts"/>
+            </not>
+        </preConditions>
+        <createTable tableName="accounts">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="account_name" type="varchar(60)"/>
+            <column name="account_type" type="AccountType"/>
+            <column name="account_status" type="AccountStatus"/>
+            <column name="balance" type="double"/>
+            <column name="product_limit" type="int"/>
             <column name="created_at" type="Timestamp"/>
             <column name="updated_at" type="Timestamp"/>
         </createTable>
