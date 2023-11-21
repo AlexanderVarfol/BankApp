@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- Insert data into the "managers" table -->
+    <changeSet id="insert_data_managers" author="AlexGay">
+        <insert tableName="managers">
+            <column name="id" value="1"/>
+            <column name="first_name" value="John"/>
+            <column name="last_name" value="Doe"/>
+            <column name="manager_stats" value="Active"/>
+            <column name="created_at" value="2023-10-31 00:00:00"/>
+            <column name="updated_at" value="2023-10-31 00:00:00"/>
+        </insert>
+    </changeSet>
+
+    <!-- Insert data into the "products" table -->
+    <changeSet id="insert_data_products" author="BankAppTable">
+        <insert tableName="products">
+            <column name="id" value="1"/>
+            <column name="name" value="Savings Account"/>
+            <column name="manager_id" value="1"/>
+            <column name="product_status" value="Active"/>
+            <column name="currency_code" value="USD"/>
+            <column name="interest_rate" value="5"/>
+            <column name="product_limit" value="10000"/>
+            <column name="created_at" value="2023-10-31 00:00:00"/>
+            <column name="updated_at" value="2023-10-31 00:00:00"/>
+        </insert>
+    </changeSet>
+
+    <!-- Insert data into the "agreements" table -->
+    <changeSet id="insert_data_agreements" author="BankAppTable">
+        <insert tableName="agreements">
+            <column name="id" value="1"/>
+            <column name="account_id" value="1"/>
+            <column name="product_id" value="1"/>
+            <column name="interest_rate" value="4.5"/>
+            <column name="agreement_status" value="1"/>
+            <column name="agreement_sum" value="5000"/>
+            <column name="created_at" value="2023-10-31 00:00:00"/>
+            <column name="updated_at" value="2023-10-31 00:00:00"/>
+        </insert>
+    </changeSet>
+
+    <!-- Insert data into the "accounts" table -->
+    <changeSet id="insert_data_accounts" author="BankAppTable">
+        <insert tableName="accounts">
+            <column name="id" value="1"/>
+            <column name="account_name" value="Primary Account"/>
+            <column name="account_type" value="Savings"/>
+            <column name="account_status" value="Active"/>
+            <column name="balance" value="10000"/>
+            <column name="currency_code" value="USD"/>
+            <column name="created_at" value="2023-10-31 00:00:00"/>
+            <column name="updated_at" value="2023-10-31 00:00:00"/>
+            <column name="client_id" value="1"/>
+            <column name="agreement_list" value="1"/>
+        </insert>
+    </changeSet>
+
+    <!-- Insert data into the "clients" table -->
+    <changeSet id="insert_data_clients" author="BankAppTable">
+        <insert tableName="clients">
+            <column name="id" value="1"/>
+            <column name="manager_id" value="1"/>
+            <column name="client_status" value="Active"/>
+            <column name="tax_code" value="123456"/>
+            <column name="first_name" value="Alice"/>
+            <column name="last_name" value="Johnson"/>
+            <column name="email" value="alice@example.com"/>
+            <column name="address" value="123 Main St"/>
+            <column name="phone_number" value="555-555-5555"/>
+            <column name="created_at" value="2023-10-31 00:00:00"/>
+            <column name="updated_at" value="2023-10-31 00:00:00"/>
+        </insert>
+    </changeSet>
+
+    <!-- Insert data into the "transactions" table -->
+    <changeSet id="insert_data_transactions" author="BankAppTable">
+        <insert tableName="transactions">
+            <column name="id" value="1"/>
+            <column name="debit_account_id" value="1"/>
+            <column name="credit_account_id" value="2"/>
+            <column name="type" value="1"/>
+            <column name="amount" value="1000"/>
+            <column name="description" value="Payment"/>
+            <column name="email" value="alice@example.com"/>
+            <column name="address" value="123 Main St"/>
+            <column name="created_at" value="2023-10-31 00:00:00"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

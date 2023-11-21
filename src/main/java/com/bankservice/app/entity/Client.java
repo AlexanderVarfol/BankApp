@@ -47,7 +47,7 @@ public class Client {
     @Column(name = "address")
     private String address;
 
-    @Column(name = "phone_nummber")
+    @Column(name = "phone_number")
     private String phone;
 
     @Column(name = "created_at")

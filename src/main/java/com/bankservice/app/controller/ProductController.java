@@ -20,6 +20,8 @@ public class ProductController {
 
     private final ProductService productService;
 
+
+    //Posзапрос из dto в entity
     @GetMapping(value = "/{id}")
     public Product getProductById(@PathVariable("id")String id){
 

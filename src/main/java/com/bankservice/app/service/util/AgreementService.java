@@ -7,5 +7,5 @@ import java.util.Optional;
 public interface AgreementService {
 
    Optional<Agreement> getAgreementById(String id);
-    //List<Agreement>
+
 }

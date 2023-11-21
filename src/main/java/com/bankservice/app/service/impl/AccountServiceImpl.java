@@ -1,6 +1,8 @@
 package com.bankservice.app.service.impl;
 
+import com.bankservice.app.dto.AccountDTO;
 import com.bankservice.app.entity.Account;
+import com.bankservice.app.mapper.AccountMapper;
 import com.bankservice.app.repository.AccountRepository;
 import com.bankservice.app.service.util.AccountService;
 import org.springframework.stereotype.Service;
@@ -11,14 +13,17 @@ import java.beans.Transient;
 import java.util.UUID;
 
 @Service
-
+@Transactional
 public class AccountServiceImpl implements AccountService {
 
     private final AccountRepository accountRepository;
+    private final AccountMapper accountMapper;
 
     public AccountServiceImpl(AccountRepository accountRepository) {
         this.accountRepository = accountRepository;
     }
+
+
 
     @Override
     @Transactional(timeout = 60,
@@ -27,6 +32,12 @@ public class AccountServiceImpl implements AccountService {
     //совокупность операций в одну процесс/транзакцию   -   поведение метода или всех меодов   -   вместо написания кода вручную
     public Account getAccountById(String id) {
         return accountRepository.getById(UUID.fromString(id));
+    }
+
+
+    @Override
+    public AccountDTO getAccountDTO() {
+        return accountMapper.toDTO(accountRepository.getAccountDTORepository());
     }
 
 }

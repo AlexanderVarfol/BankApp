@@ -22,7 +22,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="create products table" author="BankAppTable">
+    <changeSet id="create products table" author="BankAppTableAlex">
         <preConditions onFail="CONTINUE" onFailMessage="Table products already exists">
             <not>
                 <tableExists tableName="products"/>
@@ -45,7 +45,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="create agreements table" author="BankAppTable">
+    <changeSet id="create agreements table" author="BankAppTableAlex">
         <preConditions onFail="CONTINUE" onFailMessage="Table agreements already exists">
             <not>
                 <tableExists tableName="agreements"/>
@@ -58,16 +58,18 @@
             <column name="account_id" type="int">
                 <constraints foreignKeyName="account_id" references="account(id)"/>
             </column>
-            <column name="Product_status" type="varchar(60)"/>
-            <column name="currency_code" type="int"/>
-            <column name="interest_rate" type="int"/>
-            <column name="product_limit" type="int"/>
+            <column name="product_id" type="int">
+                <constraints foreignKeyName="product_id" references="product(id)"/>
+            </column>
+            <column name="interest_rate" type="double"/>
+            <column name="agreement_status" type="int"/>
+            <column name="agreement_sum" type="double"/>
             <column name="created_at" type="Timestamp"/>
             <column name="updated_at" type="Timestamp"/>
         </createTable>
     </changeSet>
 
-    <changeSet id="create accounts table" author="BankAppTable">
+    <changeSet id="create accounts table" author="BankAppTableAlex">
         <preConditions onFail="CONTINUE" onFailMessage="Table accounts already exists">
             <not>
                 <tableExists tableName="accounts"/>
@@ -81,9 +83,63 @@
             <column name="account_type" type="AccountType"/>
             <column name="account_status" type="AccountStatus"/>
             <column name="balance" type="double"/>
-            <column name="product_limit" type="int"/>
+            <column name="currency_code" type="CurrencyCode"/>
             <column name="created_at" type="Timestamp"/>
             <column name="updated_at" type="Timestamp"/>
+            <column name="client_id" type="int">
+                <constraints foreignKeyName="client_id" references="client(id)"/>
+            </column>
+            <column name="agreement_list" type="int">
+                <constraints foreignKeyName="agreement_list" references="client(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create clients table" author="BankAppTableAlex">
+        <preConditions onFail="CONTINUE" onFailMessage="Table clients already exists">
+            <not>
+                <tableExists tableName="clients"/>
+            </not>
+        </preConditions>
+        <createTable tableName="clients">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="manager_id" type="int">
+                <constraints foreignKeyName="manager_id" references="manager(id)"/>
+            </column>
+            <column name="client_status" type="ClientInfoStatus"/>
+            <column name="tax_code" type="Integer"/>
+            <column name="first_name" type="String"/>
+            <column name="last_name" type="String"/>
+            <column name="email" type="String"/>
+            <column name="address" type="String"/>
+            <column name="phone_number" type="String"/>
+            <column name="created_at" type="Timestamp"/>
+            <column name="updated_at" type="Timestamp"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="create transactions table" author="BankAppTableAlex">
+        <preConditions onFail="CONTINUE" onFailMessage="Table transactions already exists">
+            <not>
+                <tableExists tableName="transactions"/>
+            </not>
+        </preConditions>
+        <createTable tableName="transactions">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="debit_account_id" type="int">
+                <constraints foreignKeyName="debit_account_id" references="account(id)"/>
+            </column>
+            <column name="credit_account_id" type="int">
+                <constraints foreignKeyName="credit_account_id" references="account(id)"/>
+            </column>
+            <column name="type" type="int"/>
+            <column name="amount" type="String"/>
+            <column name="description" type="char"/>
+            <column name="created_at" type="Timestamp"/>
         </createTable>
     </changeSet>
 

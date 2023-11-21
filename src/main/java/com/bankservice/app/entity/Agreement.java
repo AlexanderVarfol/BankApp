@@ -39,7 +39,7 @@ public class Agreement {
     @Enumerated(EnumType.STRING)
     private int status;
 
-    @Column(name = "argement_sum")
+    @Column(name = "agreement_sum")
     private double sum;
 
     @Column(name = "created_at")

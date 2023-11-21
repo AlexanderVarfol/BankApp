@@ -25,6 +25,7 @@ public class Account {
 
     @Id
     @Column(name= "id" )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(name = "account_name")
@@ -34,6 +35,7 @@ public class Account {
     private AccountType type;
 
     @Column(name = "account_status")
+    @Enumerated(EnumType.STRING)
     private AccountStatus status;
 
     @Column(name = "balance")
@@ -54,6 +56,7 @@ public class Account {
 
     @OneToMany(mappedBy = "account", fetch = FetchType.LAZY,
             orphanRemoval = true, cascade = {MERGE, PERSIST, REFRESH})
+    @JoinColumn(name= "agreement_list")
     private List<Agreement> agreementList;
 
 
