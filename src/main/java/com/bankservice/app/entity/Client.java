@@ -30,7 +30,7 @@ public class Client {
     private Manager manager;
 
     @Column(name = "client_status")
-    private ClientInfoStatus status;
+    private ClientInfoStatus client_status;
 
     @Column(name = "tax_code")
     private Integer taxCode;
@@ -56,12 +56,13 @@ public class Client {
     @Column(name = "updated_at")
     private Timestamp updatedAt;
 
+
     @Override
     public String toString() {
         return "Client{" +
                 "id=" + id +
-                ", managerId=" + manager +
-                ", status=" + status +
+                ", manager=" + manager +
+                ", client_status=" + client_status +
                 ", taxCode=" + taxCode +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
@@ -78,11 +79,11 @@ public class Client {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Client client = (Client) o;
-        return id == client.id && manager == client.manager && status == client.status && Objects.equals(taxCode, client.taxCode) && Objects.equals(firstName, client.firstName) && Objects.equals(lastName, client.lastName) && Objects.equals(email, client.email) && Objects.equals(address, client.address) && Objects.equals(phone, client.phone) && Objects.equals(createdAt, client.createdAt) && Objects.equals(updatedAt, client.updatedAt);
+        return id == client.id && Objects.equals(manager, client.manager) && client_status == client.client_status && Objects.equals(taxCode, client.taxCode) && Objects.equals(firstName, client.firstName) && Objects.equals(lastName, client.lastName) && Objects.equals(email, client.email) && Objects.equals(address, client.address) && Objects.equals(phone, client.phone) && Objects.equals(createdAt, client.createdAt) && Objects.equals(updatedAt, client.updatedAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, manager, status, taxCode, firstName, lastName, email, address, phone, createdAt, updatedAt);
+        return Objects.hash(id, manager, client_status, taxCode, firstName, lastName, email, address, phone, createdAt, updatedAt);
     }
 }

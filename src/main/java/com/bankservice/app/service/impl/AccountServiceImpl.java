@@ -9,21 +9,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.beans.Transient;
 import java.util.UUID;
 
 @Service
 @Transactional
 public class AccountServiceImpl implements AccountService {
-
     private final AccountRepository accountRepository;
     private final AccountMapper accountMapper;
 
-    public AccountServiceImpl(AccountRepository accountRepository) {
+    public AccountServiceImpl(AccountRepository accountRepository, AccountMapper accountMapper) {
         this.accountRepository = accountRepository;
+        this.accountMapper = accountMapper;
     }
-
-
 
     @Override
     @Transactional(timeout = 60,
@@ -34,10 +31,11 @@ public class AccountServiceImpl implements AccountService {
         return accountRepository.getById(UUID.fromString(id));
     }
 
-
     @Override
-    public AccountDTO getAccountDTO() {
-        return accountMapper.toDTO(accountRepository.getAccountDTORepository());
+    public AccountDTO getAccountDTO(String id) {
+        return accountMapper.toDTO(accountRepository.getAccountById(UUID.fromString(id)));
     }
+
+
 
 }

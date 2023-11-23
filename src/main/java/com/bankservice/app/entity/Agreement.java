@@ -52,10 +52,10 @@ public class Agreement {
     public String toString() {
         return "Agreement{" +
                 "id=" + id +
-                ", accountId=" + account +
-                ", productId=" + product +
+                ", account=" + account +
+                ", product=" + product +
                 ", interestRate=" + interestRate +
-                ", status=" + status +
+                ", agreement_status=" + agreement_status +
                 ", sum=" + sum +
                 ", createdAt=" + createdAt +
                 ", updatedAt=" + updatedAt +
@@ -67,12 +67,13 @@ public class Agreement {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Agreement agreement = (Agreement) o;
-        return id == agreement.id && account == agreement.account && product == agreement.product;
+        return id == agreement.id && Double.compare(interestRate, agreement.interestRate) == 0 && agreement_status == agreement.agreement_status && Double.compare(sum, agreement.sum) == 0 && Objects.equals(account, agreement.account) && Objects.equals(product, agreement.product) && Objects.equals(createdAt, agreement.createdAt) && Objects.equals(updatedAt, agreement.updatedAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, account, product);
+        return Objects.hash(id, account, product, interestRate, agreement_status, sum, createdAt, updatedAt);
     }
 }
+
 
